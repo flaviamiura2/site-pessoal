@@ -1,0 +1,289 @@
+:root {
+  --color-bg: oklch(99% 0.003 90);
+  --color-text-primary: oklch(16% 0.004 90);
+  --color-text-about: oklch(22% 0.005 90);
+  --color-text-body: oklch(30% 0.005 90);
+  --color-text-mid: oklch(55% 0.005 90);
+  --color-text-light: oklch(78% 0.01 90);
+  --color-border: oklch(90% 0.006 90);
+  --color-accent: oklch(38% 0.09 260);
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Source Serif 4', serif;
+
+  --content-max: 680px;
+  --text-max: 660px;
+  --page-padding: 80px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.75;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-mid);
+  margin: 0 0 32px;
+}
+
+.link {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.link--underline {
+  font-size: 15px;
+  border-bottom: 1.5px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 88px var(--page-padding) 72px;
+}
+
+.hero__headline {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 1.22;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin: 0 0 40px;
+  max-width: var(--content-max);
+}
+
+.hero__headline em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ---------- About ---------- */
+
+.about {
+  padding: 0 var(--page-padding) 88px;
+}
+
+.about .eyebrow {
+  margin-bottom: 20px;
+}
+
+.about__body {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  line-height: 1.7;
+  color: var(--color-text-about);
+  max-width: var(--text-max);
+  margin: 0;
+}
+
+/* ---------- How I Work ---------- */
+
+.how-i-work {
+  padding: 0 var(--page-padding) 88px;
+}
+
+.how-i-work__list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: var(--text-max);
+}
+
+.how-i-work__list p {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ---------- Selected Work ---------- */
+
+.work {
+  padding: 0 var(--page-padding) 96px;
+}
+
+.work .eyebrow {
+  margin-bottom: 48px;
+}
+
+.work__list {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.case {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+}
+
+.case__index {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 40px;
+  color: var(--color-text-light);
+  line-height: 1;
+}
+
+.case__title {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 16px;
+}
+
+.case__content p {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-body);
+  margin: 0 0 12px;
+}
+
+.case__content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  padding: 32px var(--page-padding);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__name {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-text-mid);
+}
+
+/* ---------- Mobile (< 640px) ---------- */
+
+@media (max-width: 640px) {
+  :root {
+    --page-padding: 24px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+  }
+
+  .hero {
+    padding: 44px var(--page-padding) 36px;
+  }
+
+  .hero__headline {
+    font-size: 26px;
+    line-height: 1.28;
+    letter-spacing: -0.01em;
+    margin-bottom: 26px;
+  }
+
+  .link--underline {
+    font-size: 14px;
+  }
+
+  .about {
+    padding: 0 var(--page-padding) 36px;
+  }
+
+  .about .eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .about__body {
+    font-size: 16px;
+  }
+
+  .how-i-work {
+    padding: 0 var(--page-padding) 36px;
+  }
+
+  .how-i-work .eyebrow {
+    margin-bottom: 20px;
+  }
+
+  .how-i-work__list {
+    gap: 16px;
+  }
+
+  .how-i-work__list p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .work {
+    padding: 0 var(--page-padding) 40px;
+  }
+
+  .work .eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .work__list {
+    gap: 32px;
+  }
+
+  .case {
+    display: block;
+  }
+
+  .case__index {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .case__title {
+    font-size: 15.5px;
+    margin-bottom: 10px;
+  }
+
+  .case__content p {
+    font-size: 14px;
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+
+  .footer {
+    padding: 24px;
+  }
+
+  .footer__name,
+  .footer .link {
+    font-size: 12px;
+  }
+}
