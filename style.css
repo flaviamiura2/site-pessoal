@@ -1,10 +1,8 @@
 :root {
   --color-bg: oklch(99% 0.003 90);
   --color-text-primary: oklch(16% 0.004 90);
-  --color-text-about: oklch(22% 0.005 90);
-  --color-text-body: oklch(30% 0.005 90);
+  --color-text-body: oklch(22% 0.005 90);
   --color-text-mid: oklch(55% 0.005 90);
-  --color-text-light: oklch(78% 0.01 90);
   --color-border: oklch(90% 0.006 90);
   --color-accent: oklch(38% 0.09 260);
 
@@ -12,7 +10,8 @@
   --font-serif: 'Source Serif 4', serif;
 
   --content-max: 680px;
-  --text-max: 660px;
+  --measure: 65ch;
+  --page-max-width: 1200px;
   --page-padding: 80px;
 }
 
@@ -22,8 +21,22 @@
 
 body {
   margin: 0;
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(600px 420px at 94% 2%, oklch(88% 0.05 20 / 55%), transparent 68%),
+    radial-gradient(500px 380px at 100% 20%, oklch(91% 0.035 340 / 45%), transparent 70%),
+    radial-gradient(650px 460px at 4% 0%, oklch(90% 0.045 70 / 55%), transparent 68%),
+    radial-gradient(420px 320px at 0% 22%, oklch(89% 0.04 20 / 40%), transparent 70%),
+    radial-gradient(500px 360px at 100% 100%, oklch(91% 0.035 340 / 40%), transparent 70%),
+    radial-gradient(560px 380px at 0% 100%, oklch(90% 0.045 70 / 45%), transparent 68%);
+  background-repeat: no-repeat;
   color: var(--color-text-primary);
+}
+
+main,
+.footer {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
 }
 
 a {
@@ -41,10 +54,11 @@ a:focus-visible {
 
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-mid);
+  color: var(--color-text-primary);
   margin: 0 0 32px;
 }
 
@@ -67,61 +81,88 @@ a:focus-visible {
   padding: 88px var(--page-padding) 72px;
 }
 
+.hero__intro {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-mid);
+  margin: 0 0 16px;
+}
+
 .hero__headline {
   font-family: var(--font-sans);
-  font-size: 44px;
+  font-size: 35px;
   line-height: 1.22;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-text-primary);
+  margin: 0 0 20px;
+  max-width: var(--content-max);
+}
+
+.hero__subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text-mid);
   margin: 0 0 40px;
   max-width: var(--content-max);
 }
 
-.hero__headline em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+/* ---------- How I Got Here (timeline) ---------- */
+
+.timeline {
+  padding: 0 var(--page-padding) 96px;
 }
 
-/* ---------- About ---------- */
-
-.about {
-  padding: 0 var(--page-padding) 88px;
+.timeline .eyebrow {
+  margin-bottom: 48px;
 }
 
-.about .eyebrow {
-  margin-bottom: 20px;
-}
-
-.about__body {
-  font-family: var(--font-serif);
-  font-size: 21px;
-  line-height: 1.7;
-  color: var(--color-text-about);
-  max-width: var(--text-max);
-  margin: 0;
-}
-
-/* ---------- How I Work ---------- */
-
-.how-i-work {
-  padding: 0 var(--page-padding) 88px;
-}
-
-.how-i-work__list {
+.timeline__list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  max-width: var(--text-max);
+  gap: 32px;
+  max-width: 720px;
 }
 
-.how-i-work__list p {
+.timeline__item {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+
+.timeline__item + .timeline__item {
+  border-top: 1px solid var(--color-border);
+  padding-top: 32px;
+}
+
+.timeline__year {
   font-family: var(--font-sans);
-  font-size: 20px;
-  line-height: 1.5;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.01em;
   color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.timeline__title {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0 0 16px;
+}
+
+.timeline__content p {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-body);
+  max-width: var(--measure);
   margin: 0;
 }
 
@@ -139,19 +180,21 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 64px;
+  max-width: 720px;
 }
 
 .case {
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 64px 1fr;
   gap: 24px;
 }
 
 .case__index {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 40px;
-  color: var(--color-text-light);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary);
   line-height: 1;
 }
 
@@ -168,11 +211,32 @@ a:focus-visible {
   font-size: 16px;
   line-height: 1.7;
   color: var(--color-text-body);
+  max-width: var(--measure);
   margin: 0 0 12px;
 }
 
 .case__content p:last-child {
   margin-bottom: 0;
+}
+
+/* ---------- Outside Work ---------- */
+
+.outside {
+  padding: 0 var(--page-padding) 96px;
+}
+
+.outside .eyebrow {
+  margin-bottom: 48px;
+}
+
+.outside__body {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-body);
+  max-width: var(--measure);
+  margin: 0;
 }
 
 /* ---------- Footer ---------- */
@@ -198,18 +262,38 @@ a:focus-visible {
     --page-padding: 24px;
   }
 
+  body {
+    background-image:
+      radial-gradient(280px 200px at 92% 2%, oklch(88% 0.05 20 / 45%), transparent 68%),
+      radial-gradient(220px 170px at 100% 18%, oklch(91% 0.035 340 / 35%), transparent 70%),
+      radial-gradient(300px 220px at 6% 0%, oklch(90% 0.045 70 / 45%), transparent 68%),
+      radial-gradient(190px 150px at 0% 20%, oklch(89% 0.04 20 / 30%), transparent 70%),
+      radial-gradient(240px 180px at 100% 100%, oklch(91% 0.035 340 / 32%), transparent 70%),
+      radial-gradient(260px 190px at 0% 100%, oklch(90% 0.045 70 / 35%), transparent 68%);
+  }
+
   .eyebrow {
-    font-size: 11px;
+    font-size: 13px;
   }
 
   .hero {
     padding: 44px var(--page-padding) 36px;
   }
 
+  .hero__intro {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
   .hero__headline {
-    font-size: 26px;
+    font-size: 21px;
     line-height: 1.28;
     letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
     margin-bottom: 26px;
   }
 
@@ -217,33 +301,39 @@ a:focus-visible {
     font-size: 14px;
   }
 
-  .about {
-    padding: 0 var(--page-padding) 36px;
+  .timeline {
+    padding: 0 var(--page-padding) 40px;
   }
 
-  .about .eyebrow {
-    margin-bottom: 14px;
+  .timeline .eyebrow {
+    margin-bottom: 24px;
   }
 
-  .about__body {
-    font-size: 16px;
-  }
-
-  .how-i-work {
-    padding: 0 var(--page-padding) 36px;
-  }
-
-  .how-i-work .eyebrow {
-    margin-bottom: 20px;
-  }
-
-  .how-i-work__list {
+  .timeline__list {
     gap: 16px;
   }
 
-  .how-i-work__list p {
-    font-size: 16px;
-    line-height: 1.45;
+  .timeline__item {
+    display: block;
+  }
+
+  .timeline__item + .timeline__item {
+    padding-top: 16px;
+  }
+
+  .timeline__year {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .timeline__title {
+    font-size: 15.5px;
+    margin-bottom: 10px;
+  }
+
+  .timeline__content p {
+    font-size: 14px;
+    line-height: 1.65;
   }
 
   .work {
@@ -263,8 +353,8 @@ a:focus-visible {
   }
 
   .case__index {
-    font-size: 26px;
-    margin-bottom: 10px;
+    font-size: 13px;
+    margin-bottom: 8px;
   }
 
   .case__title {
@@ -276,6 +366,19 @@ a:focus-visible {
     font-size: 14px;
     line-height: 1.65;
     margin-bottom: 8px;
+  }
+
+  .outside {
+    padding: 0 var(--page-padding) 40px;
+  }
+
+  .outside .eyebrow {
+    margin-bottom: 24px;
+  }
+
+  .outside__body {
+    font-size: 14px;
+    line-height: 1.65;
   }
 
   .footer {
